@@ -1,4 +1,4 @@
-# Ttimeline.d3.js*
+# Timeline.d3.js
 
 ## A timeline made with d3.js and moment.js
 
