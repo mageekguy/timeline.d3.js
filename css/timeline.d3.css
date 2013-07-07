@@ -1,0 +1,149 @@
+.timeline {
+	shape-rendering: geometricPrecision;
+	stroke: gray;
+	margin: 10px;
+}
+
+.timeline .explorer {
+	stroke: gray;
+	fill: red;
+}
+
+.timeline .explorer .panel {
+	stroke: lightgray;
+	fill: #fff;
+}
+
+.timeline .explorer .eventOdd {
+	opacity: 0.5;
+}
+
+.timeline .explorer .lane0 {
+	fill: lightgray;
+	stroke: none;
+}
+
+.timeline .explorer .lane1 {
+	fill: lightgray;
+	stroke: none;
+}
+
+.timeline .explorer .lane2 {
+	fill: lightgray;
+	stroke: none;
+}
+
+.timeline .explorer .lane3 {
+	fill: lightgray;
+	stroke: none;
+}
+
+.timeline .explorer .lane4 {
+	fill: lightgray;
+	stroke: none;
+}
+
+.timeline .explorer .lane5 {
+	fill: lightgray;
+	stroke: none;
+}
+
+.timeline .explorer .lane6 {
+	fill: lightgray;
+	stroke: none;
+}
+
+.timeline .viewver {
+	stroke: none;
+	fill: #000;
+}
+
+.timeline .viewver .laneOdd {
+	fill: #eee;
+}
+
+.timeline .viewver .laneEven {
+	fill: #fff;
+}
+
+.timeline .viewver .laneLabel {
+	fill: #000;
+	font: 13px sans-serif;
+}
+
+.timeline .viewver .legend .border {
+	stroke: lightgray;
+}
+
+.timeline .viewver .legend .year line {
+	stroke: lightgray;
+}
+
+.timeline .viewver .legend .year text {
+	fill: #000;
+	font: 9px sans-serif;
+}
+
+.timeline .viewver .dead {
+	fill: #d60003 !important;
+	fill-opacity: 1.0 !important;
+}
+
+.timeline .viewver .eventOdd {
+	fill-opacity: 0.5;
+}
+
+.timeline .viewver .lane0 {
+	fill: #a3d600;
+}
+
+.timeline .viewver .lane1 {
+	fill: #00abd6;
+}
+
+.timeline .viewver .lane2 {
+	fill: #ff8d00;
+}
+
+.timeline .viewver .lane3 {
+	fill: #ffe600;
+}
+
+.timeline .viewver .lane4 {
+	fill: #ea00ff;
+}
+
+.timeline .viewver .lane5 {
+	fill: #1000ff;
+}
+
+.timeline .viewver .lane6 {
+	fill: #000;
+}
+
+.timeline .viewver .cursor {
+	fill: red;
+	stroke: #000;
+	font: 13px sans-serif;
+}
+
+.timeline .viewver .cursor .line {
+	stroke: red;
+}
+
+.timeline .viewver .cursor .lane {
+	stroke: none;
+	fill: #000;
+}
+
+.timeline .viewver .cursor .date {
+	stroke: none;
+	fill: #000;
+	font: 9px sans-serif;
+}
+
+.timeline .brush {
+	stroke: gray;
+	fill: dodgerblue;
+	fill-opacity: .365;
+}
