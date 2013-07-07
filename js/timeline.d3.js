@@ -388,8 +388,10 @@
 			.on('brush', function() {
 					if (explorer.viewver) {
 						var extent = explorer.brush.extent();
-						
-						explorer.viewver.refresh(extent[0], extent[1]);
+
+						if (extent[1] - extent[0] > 0) {
+							explorer.viewver.refresh(extent[0], extent[1]);
+						}
 					}
 				}
 			)
