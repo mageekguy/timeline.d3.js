@@ -2,7 +2,7 @@
 
 ## A timeline made with d3.js and moment.js
 
-![screenshot](http://mageekguy.github.com/timeline.d3.js/screenshot.jpg)
+![screenshot](/screenshot.png?raw=true)
 
 Timeline.d3.js is based on http://bl.ocks.org/bunkat/2338034 but it's a completely new implementation.  
 
