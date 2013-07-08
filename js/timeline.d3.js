@@ -33,9 +33,9 @@
 
 		this.date = this.cursor
 			.append('text')
-			.attr('x', 5)
-			.text(moment.unix(viewver.start).format('MMMM'))
-			.attr('class', 'date')
+				.attr('x', 5)
+				.attr('class', 'date')
+				.text(moment.unix(viewver.start).format('MMMM'))
 		;
 
 		this.date
