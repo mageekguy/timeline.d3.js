@@ -3,18 +3,19 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
 		<title>Timeline of PHP versions</title>
-		<script type="text/javascript" src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>                                                                                                                                              
-		<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.0.0/moment.min.js"></script>
-		<script type="text/javascript" src="js/timeline.d3.min.js"></script>
+		<script type="text/javascript" src="js/d3.v3.min.js" charset="utf-8"></script>                                                                                                                                              
+		<script type="text/javascript" src="js/moment.min.js"></script>
+		<script type="text/javascript" src="js/timeline.d3.js"></script>
 		<link rel="stylesheet" href="css/timeline.d3.css" type="text/css" media="screen" />
 		<style>
 		#phpTimeline {
 			width: 960px;
-			margin: auto;
+			margin: 1em auto;
 		}
 		</style>
 	</head>
 	<body>
+		<div id="phpTimeline"></div>
 		<script type="text/javascript">
 		var data = [
 			{"lane":"5.0","id":"5.0.0","start":1089721782,"end":1092227376},
@@ -74,7 +75,8 @@
 			{"lane":"5.3","id":"5.3.23","start":1363181376,"end":1365596976},
 			{"lane":"5.3","id":"5.3.24","start":1365596976,"end":1368016176},
 			{"lane":"5.3","id":"5.3.25","start":1368016176,"end":1370435376},
-			{"lane":"5.3","id":"5.3.26","start":1370435376,"end":null},
+			{"lane":"5.3","id":"5.3.26","start":1370435376,"end":1373493600},
+			{"lane":"5.3","id":"5.3.27","start":1373493600,"end":null},
 			{"lane":"5.4","id":"5.4.0","start":1330608582,"end":1335356976},
 			{"lane":"5.4","id":"5.4.1","start":1335356976,"end":1335961776},
 			{"lane":"5.4","id":"5.4.2","start":1335961776,"end":1336393776},
@@ -97,8 +99,7 @@
 			{"lane":"6.0","id":"6.0 dev","start":1202737719,"end":1268752827, "dead": true}
 		];
 
-		var phpTimeline = d3.timeline.build(data, 'body');
+		var phpTimeline = d3.timeline.build(data, '#phpTimeline');
 		</script>
-		<div id="phpTimeline"></div>
 	</body>
 </html>

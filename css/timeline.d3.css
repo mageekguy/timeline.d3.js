@@ -53,90 +53,90 @@
 	stroke: none;
 }
 
-.timeline .viewver {
+.timeline .viewer {
 	stroke: none;
 	fill: #000;
 }
 
-.timeline .viewver .laneOdd {
+.timeline .viewer .laneOdd {
 	fill: #eee;
 }
 
-.timeline .viewver .laneEven {
+.timeline .viewer .laneEven {
 	fill: #fff;
 }
 
-.timeline .viewver .laneLabel {
+.timeline .viewer .laneLabel {
 	fill: #000;
 	font: 13px sans-serif;
 }
 
-.timeline .viewver .legend .border {
+.timeline .viewer .legend .border {
 	stroke: lightgray;
 }
 
-.timeline .viewver .legend .year line {
+.timeline .viewer .legend .year line {
 	stroke: lightgray;
 }
 
-.timeline .viewver .legend .year text {
+.timeline .viewer .legend .year text {
 	fill: #000;
 	font: 9px sans-serif;
 }
 
-.timeline .viewver .dead {
+.timeline .viewer .dead {
 	fill: #d60003 !important;
 	fill-opacity: 1.0 !important;
 }
 
-.timeline .viewver .eventOdd {
+.timeline .viewer .eventOdd {
 	fill-opacity: 0.5;
 }
 
-.timeline .viewver .lane0 {
+.timeline .viewer .lane0 {
 	fill: #a3d600;
 }
 
-.timeline .viewver .lane1 {
+.timeline .viewer .lane1 {
 	fill: #00abd6;
 }
 
-.timeline .viewver .lane2 {
+.timeline .viewer .lane2 {
 	fill: #ff8d00;
 }
 
-.timeline .viewver .lane3 {
+.timeline .viewer .lane3 {
 	fill: #ffe600;
 }
 
-.timeline .viewver .lane4 {
+.timeline .viewer .lane4 {
 	fill: #ea00ff;
 }
 
-.timeline .viewver .lane5 {
+.timeline .viewer .lane5 {
 	fill: #1000ff;
 }
 
-.timeline .viewver .lane6 {
+.timeline .viewer .lane6 {
 	fill: #000;
 }
 
-.timeline .viewver .cursor {
+.timeline .viewer .cursor {
 	fill: red;
 	stroke: #000;
 	font: 13px sans-serif;
 }
 
-.timeline .viewver .cursor .line {
+.timeline .viewer .cursor .line {
 	stroke: red;
 }
 
-.timeline .viewver .cursor .lane {
+.timeline .viewer .cursor .lane {
 	stroke: none;
 	fill: #000;
 }
 
-.timeline .viewver .cursor .date {
+.timeline .viewer .cursor .date {
 	stroke: none;
 	fill: #000;
 	font: 9px sans-serif;

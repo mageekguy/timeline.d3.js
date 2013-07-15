@@ -4,22 +4,22 @@
 	var timeline = alias.timeline = {};
 
 	timeline.cursor = {};
-	timeline.cursor.build = function(svg, viewver) {
-		this.data = viewver.data;
+	timeline.cursor.build = function(svg, viewer) {
+		this.data = viewer.data;
 
 		this.cursorArea = svg
 			.append('g')
-				.attr('x', viewver.laneLabelWidth)
+				.attr('x', viewer.laneLabelWidth)
 				.attr("clip-path", "url(#clip)")
-				.attr('width', viewver.width)
-				.attr('height', viewver.height)
+				.attr('width', viewer.width)
+				.attr('height', viewer.height)
 				.attr('class', 'cursor')
 		;
 
 		this.cursor = this.cursorArea
 			.append('g')
-				.attr('width', viewver.width)
-				.attr('height', viewver.height)
+				.attr('width', viewer.width)
+				.attr('height', viewer.height)
 		;
 
 		this.line = this.cursor
@@ -27,7 +27,7 @@
 				.attr('x1', 0)
 				.attr('y1', 0)
 				.attr('x2', 0)
-				.attr('y2', viewver.height - viewver.legendHeight + ((viewver.legendHeight / 3)))
+				.attr('y2', viewer.height - viewer.legendHeight + ((viewer.legendHeight / 3)))
 				.attr('class', 'line')
 		;
 
@@ -35,14 +35,14 @@
 			.append('text')
 				.attr('x', 5)
 				.attr('class', 'date')
-				.text(moment.unix(viewver.start).format('MMMM'))
+				.text(moment.unix(viewer.start).format('MMMM'))
 		;
 
 		this.date
-			.attr('y', viewver.height - (viewver.legendHeight - (this.date.node().getBBox().height)))
+			.attr('y', viewer.height - (viewer.legendHeight - (this.date.node().getBBox().height)))
 		;
 
-		var lanes = viewver.lanes.values();
+		var lanes = viewer.lanes.values();
 
 		for (var i = 0; i < lanes.length; i++) {
 			this.cursor
@@ -50,7 +50,7 @@
 					.attr('class', 'lane')
 					.attr('id', 'lane' + i)
 					.attr('x', 5)
-					.attr("y", viewver.scaleY(i) + (viewver.laneHeight / 2))
+					.attr("y", viewer.scaleY(i) + (viewer.laneHeight / 2))
 					.attr('visibility', 'hidden')
 			;
 		}
@@ -61,18 +61,18 @@
 
 		d3.select(window).on('mousemove.timeline', function() {
 				var mouse = d3.mouse(cursorArea.node());
-				var currentDate = viewver.scaleX.invert(mouse[0]);
+				var currentDate = viewer.scaleX.invert(mouse[0]);
 
 				date.text(moment.unix(currentDate).format('MMMM'));
 
 				cursor.selectAll('text.lane').attr('visibility', 'hidden');
 
-				viewver.events
+				viewer.events
 					.selectAll('rect')
 						.filter(function(d) { return (d.start < currentDate && (d.end == null || currentDate <= d.end)); })
 							.each(function(d) {
 									cursor
-										.select('#lane' + viewver.lanes.values().indexOf(d.lane))
+										.select('#lane' + viewer.lanes.values().indexOf(d.lane))
 											.text(d.id)
 											.attr('visibility', 'visible')
 									;
@@ -87,7 +87,7 @@
 							var length = this.getComputedTextLength();
 							var x = 5;
 
-							if (mouse[0] + length + 10 > viewver.width) {
+							if (mouse[0] + length + 10 > viewer.width) {
 								x = - length - 5;
 							}
 
@@ -101,8 +101,8 @@
 		return this;
 	};
 
-	timeline.viewver = {};
-	timeline.viewver.build = function(svg, width, height, data, options) {
+	timeline.viewer = {};
+	timeline.viewer.build = function(svg, width, height, data, options) {
 		if (!options.laneLabelWidth) options.laneLabelWidth = 40;
 		if (!options.legendHeight) options.legendHeight = 40;
 
@@ -114,7 +114,7 @@
 		this.g = svg.append('g')
 			.attr('width', this.width)
 			.attr('height', this.height)
-			.attr('class', 'viewver')
+			.attr('class', 'viewer')
 		;
 
 		this.data = data;
@@ -190,11 +190,15 @@
 
 		this.legend = this.g
 			.append('g')
+		;
+
+		this.legend
 				.attr("clip-path", "url(#clip)")
 				.attr('width', this.width)
 				.attr('height', height)
 				.attr('class', 'legend')
 		;
+
 
 		this.legend
 			.append('line')
@@ -277,7 +281,7 @@
 				startYear.add('years', 1);
 			}
 
-			var viewver = this;
+			var viewer = this;
 			var cssClassGenerator = timeline.cssClassGenerator.build(this.lanes.values());
 
 			this.events
@@ -285,10 +289,10 @@
 					.data(this.data)
 							.enter()
 								.append('rect')
-									.attr('x', function(d) { return viewver.getEventX(d); })
-									.attr('y', function(d) { return viewver.getEventY(d); })
-									.attr('height', function(d) { return viewver.getEventHeight(d); }) 
-									.attr('width', function(d) { return viewver.getEventWidth(d); })
+									.attr('x', function(d) { return viewer.getEventX(d); })
+									.attr('y', function(d) { return viewer.getEventY(d); })
+									.attr('height', function(d) { return viewer.getEventHeight(d); }) 
+									.attr('width', function(d) { return viewer.getEventWidth(d); })
 									.attr('class', function(d) { return 'event ' + cssClassGenerator.getForEvent(d); })
 			;
 		};
@@ -300,17 +304,17 @@
 
 			var rects = this.events.selectAll('rect');
 
-			var viewver = this;
+			var viewer = this;
 
 			this.events
 				.selectAll('rect')
-					.attr('x', function(d) { return viewver.getEventX(d); })
-					.attr('width', function(d) { return viewver.getEventWidth(d); })
+					.attr('x', function(d) { return viewer.getEventX(d); })
+					.attr('width', function(d) { return viewer.getEventWidth(d); })
 			;
 
 			this.legend
 				.selectAll('g.dynamic')
-					.attr('transform', function() { return 'translate(' + viewver.scaleX(d3.select(this).attr('id')) + ', 0)'; })
+					.attr('transform', function() { return 'translate(' + viewer.scaleX(d3.select(this).attr('id')) + ', 0)'; })
 			;
 		};
 
@@ -334,7 +338,7 @@
 	};
 
 	timeline.explorer = {};
-	timeline.explorer.bind = function(viewver) { this.viewver = viewver; return this; };
+	timeline.explorer.bind = function(viewer) { this.viewer = viewer; return this; };
 	timeline.explorer.build = function(svg, width, height, offsetX, offsetY, data) {
 		this.width = width - offsetX;
 		this.height = height;
@@ -386,11 +390,11 @@
 		this.brush = d3.svg.brush()
 			.x(this.scaleX)
 			.on('brush', function() {
-					if (explorer.viewver) {
+					if (explorer.viewer) {
 						var extent = explorer.brush.extent();
 
 						if (extent[1] - extent[0] > 0) {
-							explorer.viewver.refresh(extent[0], extent[1]);
+							explorer.viewer.refresh(extent[0], extent[1]);
 						}
 					}
 				}
@@ -487,11 +491,11 @@
 				.attr('class', options.cssClass)
 		;
 
-		this.viewver = timeline.viewver.build(this.svg, options.width, options.dataHeight, data, options.viewver ? options.viewver : {});
-		this.explorer = timeline.explorer.build(this.svg, options.width, options.explorerHeight, this.viewver.laneLabelWidth, options.dataHeight, data, options.explorer ? options.explorer : {}).bind(this.viewver);
+		this.viewer = timeline.viewer.build(this.svg, options.width, options.dataHeight, data, options.viewer ? options.viewer : {});
+		this.explorer = timeline.explorer.build(this.svg, options.width, options.explorerHeight, this.viewer.laneLabelWidth, options.dataHeight, data, options.explorer ? options.explorer : {}).bind(this.viewer);
 
 		this.display = function() {
-			this.viewver.display();
+			this.viewer.display();
 			this.explorer.display();
 		};
 
