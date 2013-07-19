@@ -2,20 +2,47 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
-		<title>Timeline of PHP versions</title>
+		<title>Timeline of PHP 5.3, 5.4, 5.5 and 6.0</title>
 		<script type="text/javascript" src="js/d3.v3.min.js" charset="utf-8"></script>                                                                                                                                              
 		<script type="text/javascript" src="js/moment.min.js"></script>
 		<script type="text/javascript" src="js/timeline.d3.js"></script>
+		<link href="http://fonts.googleapis.com/css?family=Cantata+One" rel="stylesheet" type="text/css">
+		<link href="http://fonts.googleapis.com/css?family=Imprima" rel="stylesheet" type="text/css">
 		<link rel="stylesheet" href="css/timeline.d3.css" type="text/css" media="screen" />
 		<style>
+		h1 {
+			font-family: 'Cantata One', Georgia, serif;
+			font-size: 38px;
+			line-height: 38px;
+			color: #999;
+		}
+		p {
+			font-family: 'Imprima', Verdana, Helvetica, sans-serif;
+			font-size: 16px;
+			line-height: 12px;
+		}
+		div.timeline {
+			width: 960px;
+			margin: 0 auto;
+		}
 		#phpTimeline {
 			width: 960px;
 			margin: 1em auto;
 		}
+		a {
+			text-decoration: none;
+		}
 		</style>
 	</head>
 	<body>
-		<div id="phpTimeline"></div>
+		<a href="https://github.com/mageekguy/timeline.d3.js"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png" alt="Fork me on GitHub"></a>
+		<div class="timeline">
+			<h1>Timeline of PHP 5.3, 5.4, 5.5 and 6.0</h1>
+			<p>This timeline was made with <a href="https://github.com/mageekguy/timeline.d3.js">timeline.d3.js</a>.</p>
+			<div id="phpTimeline"></div>
+			<p>Click above to zoom in the timeline.</p>
+			<p>Drag left and right border of the selected zone to decrease or increase the zoom, or drag the selected zone to travel in time.</p>
+		</div>
 		<script type="text/javascript">
 		var data = [
 			{"lane":"5.0","id":"5.0.0","start":1089721782,"end":1092227376},
